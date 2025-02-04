@@ -22,7 +22,7 @@ namespace KPA_BUDU_rework
         public byte ADDRESS_BKU = 0x01;
         public class uart_protocol
         {
-            public readonly byte header = 0xAA;
+            public readonly byte header = 0x3F;
             public flags flag = new flags();
             public byte flag_val = 0xFF;
             public byte address_abonent;
@@ -33,105 +33,110 @@ namespace KPA_BUDU_rework
 
             public class flags
             {
-                public bool obmen_3_lvl = false;
-                public bool obmen_2_lvl = false;
-                public bool obmen_1_lvl = true;
-                public bool neispravn_abonent = false;
-                public bool abonent_zanyat = false;
-                public bool error_in_msg = false;
-                public bool write_read;
-                public bool take_get;
-                public byte get_byte()
-                {
-                    byte data = 0;
-                    data |= Convert.ToByte(obmen_3_lvl);
-                    data |= (byte)(Convert.ToByte(obmen_2_lvl) << 1);
-                    data |= (byte)(Convert.ToByte(obmen_1_lvl) << 2);
-                    data |= (byte)(Convert.ToByte(neispravn_abonent) << 3);
-                    data |= (byte)(Convert.ToByte(abonent_zanyat) << 4);
-                    data |= (byte)(Convert.ToByte(error_in_msg) << 5);
-                    data |= (byte)(Convert.ToByte(write_read) << 6);
-                    data |= (byte)(Convert.ToByte(take_get) << 7);
-                    return data;
-                }
-                private void clean_fields()
-                {
-                    neispravn_abonent = false;
-                    abonent_zanyat = false;
-                    error_in_msg = false;
-                    write_read = false;
-                    take_get = false;
-                }
+                public byte command_send = 0x02;
+                public byte request_tlm = 0x04;
+                public byte send_tlm = 0x08;
+                public byte kvit_send = 0x10;
 
+                public byte flag = 0x00;
+                //public byte get_byte()
+                //{
+                //    byte data = 0;
+                //    data |= Convert.ToByte(obmen_3_lvl);
+                //    data |= (byte)(Convert.ToByte(obmen_2_lvl) << 1);
+                //    data |= (byte)(Convert.ToByte(obmen_1_lvl) << 2);
+                //    data |= (byte)(Convert.ToByte(neispravn_abonent) << 3);
+                //    data |= (byte)(Convert.ToByte(abonent_zanyat) << 4);
+                //    data |= (byte)(Convert.ToByte(error_in_msg) << 5);
+                //    data |= (byte)(Convert.ToByte(write_read) << 6);
+                //    data |= (byte)(Convert.ToByte(take_get) << 7);
+                //    return data;
+                //}
+                //private void clean_fields()
+                //{
+                //    //neispravn_abonent = false;
+                //    //abonent_zanyat = false;
+                //    //error_in_msg = false;
+                //    //write_read = false;
+                //    //take_get = false;
+                //}
+
+                //Отправка команды
                 public byte get_command_write()
                 {
-                    clean_fields();
-                    write_read = true;
-                    take_get = true;
-                    return get_byte();//0xc4
+                    //clean_fields();
+                    //write_read = true;
+                    //take_get = true;
+                    return 0x02;//0xc4
                 }
 
+                //Отправка запроса телеметрии
                 public byte get_command_read()
                 {
-                    clean_fields();
-                    take_get = true;
-                    return get_byte();
+                    //clean_fields();
+                    //take_get = true;
+                    return 0x04;
                 }
 
+                //Получение квитанции
                 public byte get_answer_complete()
                 {
-                    clean_fields();
-                    write_read = true;
-                    return get_byte();
+                    //clean_fields();
+                    //write_read = true;
+                    return 0x10;
                 }
 
+                //Получение телеметрии
                 public byte get_answer_tlm()
                 {
-                    clean_fields();
-                    return get_byte();
+                    //clean_fields();
+                    return 0x08;
                 }
             };
             public void set_flag(byte data)
             {
-                if ((data & 1) == 1)
-                    flag.obmen_3_lvl = true;
-                else
-                    flag.obmen_3_lvl = false;
+                if (data == flag.command_send)
+                    flag.flag = flag.command_send;
+                if (data == flag.)
+                //if ((data & 1) == 1)
+                //    flag.obmen_3_lvl = true;
+                //else
+                //    flag.obmen_3_lvl = false;
 
-                if ((data & (1<<1)) == (1<<1))
-                    flag.obmen_2_lvl = true;
-                else
-                    flag.obmen_2_lvl = false;
+                //if ((data & (1<<1)) == (1<<1))
+                //    flag.obmen_2_lvl = true;
+                //else
+                //    flag.obmen_2_lvl = false;
 
-                if ((data & (1<<2)) == (1<<2))
-                    flag.obmen_1_lvl = true;
-                else
-                    flag.obmen_1_lvl = false;
+                //if ((data & (1<<2)) == (1<<2))
+                //    flag.obmen_1_lvl = true;
+                //else
+                //    flag.obmen_1_lvl = false;
 
-                if ((data & (1<<3)) == (1<<3))
-                    flag.neispravn_abonent = true;
-                else
-                    flag.neispravn_abonent = false;
+                //if ((data & (1<<3)) == (1<<3))
+                //    flag.neispravn_abonent = true;
+                //else
+                //    flag.neispravn_abonent = false;
 
-                if ((data & (1<<4)) == (1<<4))
-                    flag.abonent_zanyat = true;
-                else
-                    flag.abonent_zanyat = false;
+                //if ((data & (1<<4)) == (1<<4))
+                //    flag.abonent_zanyat = true;
+                //else
+                //    flag.abonent_zanyat = false;
 
-                if ((data & (1<<5)) == (1<<5))
-                    flag.error_in_msg = true;
-                else
-                    flag.error_in_msg = false;
+                //if ((data & (1<<5)) == (1<<5))
+                //    flag.error_in_msg = true;
+                //else
+                //    flag.error_in_msg = false;
 
-                if ((data & (1<<6)) == (1<<6))
-                    flag.write_read = true;
-                else
-                    flag.write_read = false;
+                //if ((data & (1<<6)) == (1<<6))
+                //    flag.write_read = true;
+                //else
+                //    flag.write_read = false;
 
-                if ((data & (1<<7)) == (1<<7))
-                    flag.take_get = true;
-                else
-                    flag.take_get = false;
+                //if ((data & (1<<7)) == (1<<7))
+                //    flag.take_get = true;
+                //else
+                //    flag.take_get = false;
             }
         }
 
