@@ -30,6 +30,9 @@
         {
             this.KPA_BUDU_main_table = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.UART_setting = new KPA_BUDU_rework.uart_setting();
+            this.Console = new KPA_BUDU_rework.user_Console();
+            this.xml_button = new KPA_BUDU_rework.XML_button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.xml_button_panel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -37,9 +40,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.записьТелеметрииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.чтениеТелеметрииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UART_setting = new KPA_BUDU_rework.uart_setting();
-            this.Console = new KPA_BUDU_rework.user_Console();
-            this.xml_button = new KPA_BUDU_rework.XML_button();
             this.KPA_BUDU_main_table.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -50,17 +50,18 @@
             // KPA_BUDU_main_table
             // 
             this.KPA_BUDU_main_table.ColumnCount = 2;
-            this.KPA_BUDU_main_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
+            this.KPA_BUDU_main_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 418F));
             this.KPA_BUDU_main_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.KPA_BUDU_main_table.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.KPA_BUDU_main_table.Controls.Add(this.tableLayoutPanel1, 1, 0);
             this.KPA_BUDU_main_table.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KPA_BUDU_main_table.Location = new System.Drawing.Point(4, 35);
+            this.KPA_BUDU_main_table.Location = new System.Drawing.Point(3, 28);
+            this.KPA_BUDU_main_table.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.KPA_BUDU_main_table.Name = "KPA_BUDU_main_table";
             this.KPA_BUDU_main_table.RowCount = 1;
             this.KPA_BUDU_main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.KPA_BUDU_main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 529F));
-            this.KPA_BUDU_main_table.Size = new System.Drawing.Size(1226, 529);
+            this.KPA_BUDU_main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 430F));
+            this.KPA_BUDU_main_table.Size = new System.Drawing.Size(921, 431);
             this.KPA_BUDU_main_table.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -73,14 +74,42 @@
             this.tableLayoutPanel2.Controls.Add(this.Console, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.xml_button, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 190F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 154F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(494, 523);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(414, 427);
             this.tableLayoutPanel2.TabIndex = 3;
+            // 
+            // UART_setting
+            // 
+            this.UART_setting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UART_setting.Location = new System.Drawing.Point(4, 74);
+            this.UART_setting.Margin = new System.Windows.Forms.Padding(2);
+            this.UART_setting.Name = "UART_setting";
+            this.UART_setting.Size = new System.Drawing.Size(406, 150);
+            this.UART_setting.TabIndex = 0;
+            // 
+            // Console
+            // 
+            this.Console.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Console.Location = new System.Drawing.Point(4, 230);
+            this.Console.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Console.Name = "Console";
+            this.Console.Size = new System.Drawing.Size(406, 193);
+            this.Console.TabIndex = 1;
+            // 
+            // xml_button
+            // 
+            this.xml_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xml_button.Location = new System.Drawing.Point(4, 4);
+            this.xml_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.xml_button.Name = "xml_button";
+            this.xml_button.Size = new System.Drawing.Size(406, 64);
+            this.xml_button.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
@@ -89,12 +118,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.xml_button_panel, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(503, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(420, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.41281F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.58719F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 523);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.323185F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.67681F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(499, 427);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // xml_button_panel
@@ -104,25 +134,27 @@
             this.xml_button_panel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.xml_button_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.xml_button_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xml_button_panel.Location = new System.Drawing.Point(3, 78);
+            this.xml_button_panel.Location = new System.Drawing.Point(2, 29);
+            this.xml_button_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.xml_button_panel.Name = "xml_button_panel";
-            this.xml_button_panel.Size = new System.Drawing.Size(714, 442);
+            this.xml_button_panel.Size = new System.Drawing.Size(495, 396);
             this.xml_button_panel.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1232F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 925F));
             this.tableLayoutPanel3.Controls.Add(this.KPA_BUDU_main_table, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.menu_main, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1103, 568);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(827, 462);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // menu_main
@@ -132,7 +164,8 @@
             this.toolStripMenuItem1});
             this.menu_main.Location = new System.Drawing.Point(1, 1);
             this.menu_main.Name = "menu_main";
-            this.menu_main.Size = new System.Drawing.Size(1232, 28);
+            this.menu_main.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menu_main.Size = new System.Drawing.Size(925, 24);
             this.menu_main.TabIndex = 1;
             this.menu_main.Text = "Меню";
             // 
@@ -142,54 +175,31 @@
             this.записьТелеметрииToolStripMenuItem,
             this.чтениеТелеметрииToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(65, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(53, 20);
             this.toolStripMenuItem1.Text = "Меню";
             // 
             // записьТелеметрииToolStripMenuItem
             // 
             this.записьТелеметрииToolStripMenuItem.Name = "записьТелеметрииToolStripMenuItem";
-            this.записьТелеметрииToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.записьТелеметрииToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.записьТелеметрииToolStripMenuItem.Text = "Запись телеметрии";
             this.записьТелеметрииToolStripMenuItem.Click += new System.EventHandler(this.записьТелеметрииToolStripMenuItem_Click);
             // 
             // чтениеТелеметрииToolStripMenuItem
             // 
             this.чтениеТелеметрииToolStripMenuItem.Name = "чтениеТелеметрииToolStripMenuItem";
-            this.чтениеТелеметрииToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.чтениеТелеметрииToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.чтениеТелеметрииToolStripMenuItem.Text = "Чтение телеметрии";
             this.чтениеТелеметрииToolStripMenuItem.Click += new System.EventHandler(this.чтениеТелеметрииToolStripMenuItem_Click);
             // 
-            // UART_setting
-            // 
-            this.UART_setting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UART_setting.Location = new System.Drawing.Point(5, 91);
-            this.UART_setting.Name = "UART_setting";
-            this.UART_setting.Size = new System.Drawing.Size(484, 184);
-            this.UART_setting.TabIndex = 0;
-            // 
-            // Console
-            // 
-            this.Console.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Console.Location = new System.Drawing.Point(5, 283);
-            this.Console.Name = "Console";
-            this.Console.Size = new System.Drawing.Size(484, 235);
-            this.Console.TabIndex = 1;
-            // 
-            // xml_button
-            // 
-            this.xml_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xml_button.Location = new System.Drawing.Point(5, 5);
-            this.xml_button.Name = "xml_button";
-            this.xml_button.Size = new System.Drawing.Size(484, 78);
-            this.xml_button.TabIndex = 1;
-            // 
             // MAIN_KPA_BUDU
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 568);
+            this.ClientSize = new System.Drawing.Size(827, 462);
             this.Controls.Add(this.tableLayoutPanel3);
             this.MainMenuStrip = this.menu_main;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MAIN_KPA_BUDU";
             this.Text = "KPA_BUDU";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

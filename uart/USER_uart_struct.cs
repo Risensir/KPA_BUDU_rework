@@ -24,12 +24,13 @@ namespace KPA_BUDU_rework
         {
             public readonly byte header = 0x3F;
             public flags flag = new flags();
-            public byte flag_val = 0xFF;
-            public byte address_abonent;
-            public byte reserved = 0x00;
+            public byte flag_val = 0x00;
+            public byte address_receiver;
+            public byte address_sender;
             public byte length_data;
             public List<byte> data = new List<byte>();
             public byte crc;
+            public readonly byte end_byte = 0x3E;
 
             public class flags
             {
@@ -67,15 +68,16 @@ namespace KPA_BUDU_rework
                     //clean_fields();
                     //write_read = true;
                     //take_get = true;
-                    return 0x02;//0xc4
+                    flag = 0x02;
+                    return flag;//0xc4
                 }
 
                 //Отправка запроса телеметрии
                 public byte get_command_read()
                 {
                     //clean_fields();
-                    //take_get = true;
-                    return 0x04;
+                    flag = 0x04;
+                    return flag;//0xc4
                 }
 
                 //Получение квитанции
@@ -83,21 +85,29 @@ namespace KPA_BUDU_rework
                 {
                     //clean_fields();
                     //write_read = true;
-                    return 0x10;
+                    flag = 0x10;
+                    return flag;//0xc4
                 }
 
                 //Получение телеметрии
                 public byte get_answer_tlm()
                 {
                     //clean_fields();
-                    return 0x08;
+                    flag = 0x08;
+                    return flag;//0xc4
                 }
             };
             public void set_flag(byte data)
             {
                 if (data == flag.command_send)
                     flag.flag = flag.command_send;
-                if (data == flag.)
+                if (data == flag.kvit_send)
+                    flag.flag = flag.kvit_send;
+                if (data == flag.request_tlm)
+                    flag.flag = flag.request_tlm;
+                if (data == flag.send_tlm)
+                    flag.flag = flag.send_tlm;
+
                 //if ((data & 1) == 1)
                 //    flag.obmen_3_lvl = true;
                 //else
@@ -144,9 +154,9 @@ namespace KPA_BUDU_rework
         {
             List<byte> crc_val = new List<byte>();
             crc_val.Add(msg.header);
-            crc_val.Add(msg.flag.get_byte());
-            crc_val.Add(msg.address_abonent);
-            crc_val.Add(msg.reserved);
+            crc_val.Add(msg.flag.flag);
+            crc_val.Add(msg.address_receiver);
+            crc_val.Add(msg.address_sender);
             crc_val.Add(msg.length_data);
             crc_val.AddRange(msg.data);
             return crc.crc_out(crc_val.ToArray());
@@ -158,16 +168,18 @@ namespace KPA_BUDU_rework
             List<byte> out_msg = new List<byte>();
 
             msg.length_data = (byte)data.Count();
-            msg.address_abonent = ADDRESS_BUDU;
+            msg.address_receiver = ADDRESS_BUDU;
+            msg.address_sender = ADDRESS_BKU;
             msg.data = data;
            
             out_msg.Add(msg.header);
             out_msg.Add(msg.flag.get_command_write());
-            out_msg.Add(msg.address_abonent);
-            out_msg.Add(msg.reserved);
+            out_msg.Add(msg.address_receiver);
+            out_msg.Add(msg.address_sender);
             out_msg.Add(msg.length_data);
             out_msg.AddRange(msg.data);
             out_msg.Add(get_crc_uart(msg));
+            out_msg.Add(msg.end_byte);
             return out_msg;
         }
 
@@ -181,8 +193,8 @@ namespace KPA_BUDU_rework
             {
                 msg.flag_val = q_data.Dequeue();
                 msg.set_flag(msg.flag_val);
-                msg.address_abonent = q_data.Dequeue();
-                msg.reserved = q_data.Dequeue();
+                msg.address_receiver = q_data.Dequeue();
+                msg.address_sender = q_data.Dequeue();
                 msg.length_data = q_data.Dequeue();
                 int i = 0;
                 while ((i < msg.length_data) && ((q_data.Count() > 0)))
@@ -193,9 +205,9 @@ namespace KPA_BUDU_rework
                 byte crc_temp = q_data.Dequeue();
                 if (crc_temp == get_crc_uart(msg))
                 {
-                    if (msg.address_abonent != ADDRESS_BKU)
+                    if (msg.address_receiver != ADDRESS_BKU)
                     {
-                        PrintHandler("Получен некорректный адрес: " + BitConverter.ToString(new byte[] {msg.address_abonent}));
+                        PrintHandler("Получен некорректный адрес: " + BitConverter.ToString(new byte[] {msg.address_receiver}));
                     }
 
                     if (msg.flag_val == msg.flag.get_answer_complete())
@@ -209,15 +221,15 @@ namespace KPA_BUDU_rework
                             TelemetryHandler(msg.data);
                             PrintHandler("Получена телеметрия" + Environment.NewLine);
                         }
-                        else
-                        {
-                            if ((msg.flag_val & (1<<3)) == (1 << 3))
-                                PrintHandler("Неисправность абонента" + Environment.NewLine);
-                            if ((msg.flag_val & (1<<4)) == (1 << 4))
-                                PrintHandler("Абонент занят" + Environment.NewLine);
-                            if ((msg.flag_val & (1<<4)) == (1 << 4))
-                                PrintHandler("Ошибка в сообщении" + Environment.NewLine);
-                        }
+                        //else
+                        //{
+                        //    if ((msg.flag_val & (1<<3)) == (1 << 3))
+                        //        PrintHandler("Неисправность абонента" + Environment.NewLine);
+                        //    if ((msg.flag_val & (1<<4)) == (1 << 4))
+                        //        PrintHandler("Абонент занят" + Environment.NewLine);
+                        //    if ((msg.flag_val & (1<<4)) == (1 << 4))
+                        //        PrintHandler("Ошибка в сообщении" + Environment.NewLine);
+                        //}
                     }
                 }
                 else
