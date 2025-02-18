@@ -129,6 +129,8 @@ namespace KPA_BUDU_rework
         {
             for (int i = 0; i < list_tlm.Count; i++)
             {
+                if (list_tlm[i].name == "reserved")
+                    continue;
                 if (list_tlm[i].type == "bool")
                 {
                     if (list_tlm[i].val == 1)

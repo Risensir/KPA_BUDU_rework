@@ -150,7 +150,12 @@ namespace KPA_BUDU_rework
             }
         }
 
-        private byte get_crc_uart(uart_protocol msg)
+        private byte get_crc_uart(List<byte> list)
+        {
+            return crc.crc_out(list.ToArray());
+        }
+
+            private byte get_crc_uart(uart_protocol msg)
         {
             List<byte> crc_val = new List<byte>();
             crc_val.Add(msg.header);
@@ -160,6 +165,27 @@ namespace KPA_BUDU_rework
             crc_val.Add(msg.length_data);
             crc_val.AddRange(msg.data);
             return crc.crc_out(crc_val.ToArray());
+        }
+
+        public List<byte> construct_command(string str)
+        {
+            uart_protocol msg = new uart_protocol();
+            List<byte> out_msg = new List<byte>();
+            if (str == "TELEMETRY")
+            {
+                msg.length_data = 1;
+                msg.address_receiver = ADDRESS_BUDU;
+                msg.address_sender = ADDRESS_BKU;
+
+                out_msg.Add(msg.header);
+                out_msg.Add(msg.flag.get_command_read());
+                out_msg.Add(msg.address_receiver);
+                out_msg.Add(msg.address_sender);
+                out_msg.Add(msg.length_data);
+                out_msg.Add(get_crc_uart(out_msg));
+                out_msg.Add(msg.end_byte);  
+            }
+            return out_msg;
         }
 
         public List<byte> construct_command(List<byte> data)
@@ -196,6 +222,8 @@ namespace KPA_BUDU_rework
                 msg.address_receiver = q_data.Dequeue();
                 msg.address_sender = q_data.Dequeue();
                 msg.length_data = q_data.Dequeue();
+                if (msg.length_data > 0x0D)
+                    return;
                 int i = 0;
                 while ((i < msg.length_data) && ((q_data.Count() > 0)))
                 {

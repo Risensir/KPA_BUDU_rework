@@ -47,7 +47,10 @@ namespace KPA_BUDU_rework
             string _string_ = "";
 
             foreach (user_tlm.param_val param in list_tlm)
+            {
+               if (param.name != "reserved")
                 _string_ += "\t" + param.val;
+            }
 
             string time_string = "";
 

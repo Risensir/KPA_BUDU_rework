@@ -29,7 +29,7 @@ namespace KPA_BUDU_rework
         public delegate void SEND_byte_Handler(byte[] msg);
         public event SEND_byte_Handler SendByteHandler;
 
-        private string filePath_XML = @"C:\Users\NewArm\Desktop\NETWORK\БУДУ\СТИЛСОФТ\KPA_BUDU_programm-master\XML_struct\Commands_with_struct.xml";
+        private string filePath_XML = @"C:\Users\Ruslan2\Source\Repos\Risensir\XML_struct\Commands_with_struct.xml";
 
         public TableLayoutPanel table_main = new TableLayoutPanel();
         private TableLayoutPanel table_but = new TableLayoutPanel();
@@ -38,6 +38,7 @@ namespace KPA_BUDU_rework
         class Button_user : System.Windows.Forms.Button
         {
             public string name;
+            public byte flag;
             public byte var;
             public byte[] vars;
             public List<CheckedListBox> checkBox = new List<CheckedListBox>();
@@ -191,15 +192,15 @@ namespace KPA_BUDU_rework
                                 //.............................................................Заполнение атрибутов созданных кнопок
                                 but.Text = childnode.Attributes.GetNamedItem("name").Value;
                                 if (but.Text == "TELEMETRY")
+                                {
                                     BUT_TELEMETRY = but;
+                                    BUT_TELEMETRY.flag = 0x04;
+                                }
                                 string temp_string_var = childnode.Attributes.GetNamedItem("var").Value;
                                 if (!((temp_string_var == "") | (temp_string_var == null)))
                                     but.var = Convert.ToByte(temp_string_var, 16);
 
                                 int count_add = -1;
-
-
-
 
                                 TableLayoutPanel table_second = new TableLayoutPanel();
                                 table_second.Dock = DockStyle.Fill;
@@ -542,93 +543,100 @@ namespace KPA_BUDU_rework
             Button_user but = (Button_user)sender;
                 try
                 {
+                if (but.name == "TELEMETRY")
+                {
+                    USER_uart_struct user_uart = new USER_uart_struct();
+                    SendByteHandler(user_uart.construct_command("TELEMETRY").ToArray()); //отправка запроса данных
+                }
+                else
+                {
                     List<byte> data = new List<byte>();
-                        int ind_bool = 0;
-                        int ind_uint8 = 0;
-                        int ind_int = 0;
-                        data.Add(but.var);
-                        Dictionary<string, int> dict = new Dictionary<string, int>()
+                    int ind_bool = 0;
+                    int ind_uint8 = 0;
+                    int ind_int = 0;
+                    data.Add(but.var);
+                    Dictionary<string, int> dict = new Dictionary<string, int>()
+                    {
+                        ["bool"] = 0,
+                        ["uint8"] = 0,
+                        ["int"] = 0
+                    };
+                    foreach (string str in but.str_type)
+                    {
+                        if (str == "bool")
                         {
-                            ["bool"] = 0,
-                            ["uint8"] = 0,
-                            ["int"] = 0
-                        };
-                        foreach (string str in but.str_type)
-                        {
-                            if (str == "bool")
-                            {
-                                int index = 0;
-                                dict.TryGetValue("bool", out index);
+                            int index = 0;
+                            dict.TryGetValue("bool", out index);
 
-                                if (but.checkBox[index].GetItemChecked(0))
-                                    data.Add(0);
+                            if (but.checkBox[index].GetItemChecked(0))
+                                data.Add(0);
 
-                                if (but.checkBox[index].GetItemChecked(1))
-                                    data.Add(1);
-                                ind_bool++;
-                                dict["bool"] = ind_bool;
-                            }
-
-                            if (str == "uint8")
-                            {
-                                int index = 0;
-                                dict.TryGetValue("uint8", out index);
-
-                                byte[] new_ar = BitConverter.GetBytes((int)but.uint8[index].Value);
-                                List<byte> new_ar_list = new_ar.ToList();
-
-                                byte temp_byte = 0;
-                                int ind = new_ar_list.Count - 1;
-                                do
-                                {
-                                    temp_byte = new_ar_list[ind];
-
-                                    if (new_ar_list[ind] == 0)
-                                        new_ar_list.RemoveAt(ind);
-
-                                    ind--;
-
-                                } while ((temp_byte == 0) & (ind > 0));
-
-                                new_ar_list.Reverse();
-                                data.AddRange(new_ar_list);
-
-                                ind_uint8++;
-                                dict["uint8"] = ind_uint8;
-                            }
-
-                            if (str == "int")
-                            {
-                                int index = 0;
-                                dict.TryGetValue("int", out index);
-
-                                byte[] new_ar = BitConverter.GetBytes((int)but.int32[index].Value);
-                                List<byte> new_ar_list = new_ar.ToList();
-
-                                byte temp_byte = 0;
-                      
-                                new_ar_list.Reverse();
-                                data.AddRange(new_ar_list);
-
-                                ind_int++;
-                                dict["int"] = ind_int;
-                            }
+                            if (but.checkBox[index].GetItemChecked(1))
+                                data.Add(1);
+                            ind_bool++;
+                            dict["bool"] = ind_bool;
                         }
-                      
 
-                //----------------------------------------- STRUCTURE SEND END
+                        if (str == "uint8")
+                        {
+                            int index = 0;
+                            dict.TryGetValue("uint8", out index);
+
+                            byte[] new_ar = BitConverter.GetBytes((int)but.uint8[index].Value);
+                            List<byte> new_ar_list = new_ar.ToList();
+
+                            byte temp_byte = 0;
+                            int ind = new_ar_list.Count - 1;
+                            do
+                            {
+                                temp_byte = new_ar_list[ind];
+
+                                if (new_ar_list[ind] == 0)
+                                    new_ar_list.RemoveAt(ind);
+
+                                ind--;
+
+                            } while ((temp_byte == 0) & (ind > 0));
+
+                            new_ar_list.Reverse();
+                            data.AddRange(new_ar_list);
+
+                            ind_uint8++;
+                            dict["uint8"] = ind_uint8;
+                        }
+
+                        if (str == "int")
+                        {
+                            int index = 0;
+                            dict.TryGetValue("int", out index);
+
+                            byte[] new_ar = BitConverter.GetBytes((int)but.int32[index].Value);
+                            List<byte> new_ar_list = new_ar.ToList();
+
+                            byte temp_byte = 0;
+
+                            new_ar_list.Reverse();
+                            data.AddRange(new_ar_list);
+
+                            ind_int++;
+                            dict["int"] = ind_int;
+                        }
+                    }
 
 
-                USER_uart_struct user_uart = new USER_uart_struct();
-                SendByteHandler(user_uart.construct_command(data).ToArray());
-                        //SetLog("Отправлено: " + but.Text + ": " + BitConverter.ToString(out_word.ToArray()).Replace("-", " ") + Environment.NewLine, log_file);
-                        //SetText_COM("Отправлено: ");
-                        //foreach (string str in NAME)
-                        //{
-                        //    SetText_COM(str + " | ");
-                        //}
-                        //SetText_COM(Environment.NewLine);
-                    
+                    //----------------------------------------- STRUCTURE SEND END
+
+                    USER_uart_struct user_uart = new USER_uart_struct();
+                    SendByteHandler(user_uart.construct_command(data).ToArray());
+                }
+                    //SetLog("Отправлено: " + but.Text + ": " + BitConverter.ToString(out_word.ToArray()).Replace("-", " ") + Environment.NewLine, log_file);
+                    //SetText_COM("Отправлено: ");
+                    //foreach (string str in NAME)
+                    //{
+                    //    SetText_COM(str + " | ");
+                    //}
+                    //SetText_COM(Environment.NewLine);
+
                     if (!((sender as Button_user).press_flag))
                     {
                         (sender as Button_user).ForeColor = Color.Red;
@@ -648,6 +656,7 @@ namespace KPA_BUDU_rework
                     //button1_Click(button1, new EventArgs());
                     //Task.Delay(1000);
                 }
+
 
             }
         private void slider_handler(object sender, EventArgs e)

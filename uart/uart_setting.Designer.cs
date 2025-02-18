@@ -63,13 +63,13 @@
             this.uart_main_table.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.uart_main_table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uart_main_table.Location = new System.Drawing.Point(0, 0);
-            this.uart_main_table.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_main_table.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_main_table.Name = "uart_main_table";
             this.uart_main_table.RowCount = 3;
             this.uart_main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.uart_main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.uart_main_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.uart_main_table.Size = new System.Drawing.Size(536, 448);
+            this.uart_main_table.Size = new System.Drawing.Size(715, 551);
             this.uart_main_table.TabIndex = 56;
             // 
             // tableLayoutPanel4
@@ -82,12 +82,12 @@
             this.tableLayoutPanel4.Controls.Add(this.uart_stop_tlm_but, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.uart_start_tlm_but, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 300);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 368);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(532, 146);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(709, 181);
             this.tableLayoutPanel4.TabIndex = 58;
             // 
             // uart_open_close
@@ -98,10 +98,10 @@
             this.uart_open_close.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.uart_open_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.uart_open_close.ForeColor = System.Drawing.Color.ForestGreen;
-            this.uart_open_close.Location = new System.Drawing.Point(2, 2);
-            this.uart_open_close.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_open_close.Location = new System.Drawing.Point(3, 2);
+            this.uart_open_close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_open_close.Name = "uart_open_close";
-            this.uart_open_close.Size = new System.Drawing.Size(262, 142);
+            this.uart_open_close.Size = new System.Drawing.Size(348, 177);
             this.uart_open_close.TabIndex = 52;
             this.uart_open_close.Text = "Запустить";
             this.uart_open_close.UseVisualStyleBackColor = true;
@@ -109,10 +109,10 @@
             // uart_stop_tlm_but
             // 
             this.uart_stop_tlm_but.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uart_stop_tlm_but.Location = new System.Drawing.Point(401, 2);
-            this.uart_stop_tlm_but.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_stop_tlm_but.Location = new System.Drawing.Point(534, 2);
+            this.uart_stop_tlm_but.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_stop_tlm_but.Name = "uart_stop_tlm_but";
-            this.uart_stop_tlm_but.Size = new System.Drawing.Size(129, 142);
+            this.uart_stop_tlm_but.Size = new System.Drawing.Size(172, 177);
             this.uart_stop_tlm_but.TabIndex = 54;
             this.uart_stop_tlm_but.Text = "Стоп Телеметрии";
             this.uart_stop_tlm_but.UseVisualStyleBackColor = true;
@@ -121,10 +121,10 @@
             // uart_start_tlm_but
             // 
             this.uart_start_tlm_but.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uart_start_tlm_but.Location = new System.Drawing.Point(268, 2);
-            this.uart_start_tlm_but.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_start_tlm_but.Location = new System.Drawing.Point(357, 2);
+            this.uart_start_tlm_but.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_start_tlm_but.Name = "uart_start_tlm_but";
-            this.uart_start_tlm_but.Size = new System.Drawing.Size(129, 142);
+            this.uart_start_tlm_but.Size = new System.Drawing.Size(171, 177);
             this.uart_start_tlm_but.TabIndex = 53;
             this.uart_start_tlm_but.Text = "Запрос Телеметрии";
             this.uart_start_tlm_but.UseVisualStyleBackColor = true;
@@ -137,13 +137,13 @@
             this.tableLayoutPanel2.Controls.Add(this.uart_port_combobox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.uart_port_label, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(532, 145);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(709, 179);
             this.tableLayoutPanel2.TabIndex = 56;
             // 
             // uart_port_combobox
@@ -151,19 +151,18 @@
             this.uart_port_combobox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uart_port_combobox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.uart_port_combobox.FormattingEnabled = true;
-            this.uart_port_combobox.Location = new System.Drawing.Point(2, 74);
-            this.uart_port_combobox.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_port_combobox.Location = new System.Drawing.Point(3, 91);
+            this.uart_port_combobox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_port_combobox.Name = "uart_port_combobox";
-            this.uart_port_combobox.Size = new System.Drawing.Size(528, 21);
+            this.uart_port_combobox.Size = new System.Drawing.Size(703, 24);
             this.uart_port_combobox.TabIndex = 43;
             // 
             // uart_port_label
             // 
             this.uart_port_label.AutoSize = true;
-            this.uart_port_label.Location = new System.Drawing.Point(2, 0);
-            this.uart_port_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.uart_port_label.Location = new System.Drawing.Point(3, 0);
             this.uart_port_label.Name = "uart_port_label";
-            this.uart_port_label.Size = new System.Drawing.Size(57, 13);
+            this.uart_port_label.Size = new System.Drawing.Size(71, 16);
             this.uart_port_label.TabIndex = 42;
             this.uart_port_label.Text = "COM порт";
             // 
@@ -183,13 +182,13 @@
             this.tableLayoutPanel3.Controls.Add(this.uart_baudrate_label, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.uart_parity_label, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 151);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 185);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(532, 145);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(709, 179);
             this.tableLayoutPanel3.TabIndex = 57;
             // 
             // uart_baudrate_combobox
@@ -208,10 +207,10 @@
             "57600",
             "115200",
             "921600"});
-            this.uart_baudrate_combobox.Location = new System.Drawing.Point(2, 74);
-            this.uart_baudrate_combobox.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_baudrate_combobox.Location = new System.Drawing.Point(3, 91);
+            this.uart_baudrate_combobox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_baudrate_combobox.Name = "uart_baudrate_combobox";
-            this.uart_baudrate_combobox.Size = new System.Drawing.Size(129, 21);
+            this.uart_baudrate_combobox.Size = new System.Drawing.Size(171, 24);
             this.uart_baudrate_combobox.TabIndex = 44;
             // 
             // uart_parity_combobox
@@ -223,10 +222,10 @@
             "Odd",
             "Mark",
             "None"});
-            this.uart_parity_combobox.Location = new System.Drawing.Point(135, 74);
-            this.uart_parity_combobox.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_parity_combobox.Location = new System.Drawing.Point(180, 91);
+            this.uart_parity_combobox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_parity_combobox.Name = "uart_parity_combobox";
-            this.uart_parity_combobox.Size = new System.Drawing.Size(129, 21);
+            this.uart_parity_combobox.Size = new System.Drawing.Size(171, 24);
             this.uart_parity_combobox.TabIndex = 45;
             // 
             // uart_data_bits_combobox
@@ -238,19 +237,18 @@
             "6",
             "7",
             "8"});
-            this.uart_data_bits_combobox.Location = new System.Drawing.Point(268, 74);
-            this.uart_data_bits_combobox.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_data_bits_combobox.Location = new System.Drawing.Point(357, 91);
+            this.uart_data_bits_combobox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_data_bits_combobox.Name = "uart_data_bits_combobox";
-            this.uart_data_bits_combobox.Size = new System.Drawing.Size(129, 21);
+            this.uart_data_bits_combobox.Size = new System.Drawing.Size(171, 24);
             this.uart_data_bits_combobox.TabIndex = 47;
             // 
             // uart_stop_label
             // 
             this.uart_stop_label.AutoSize = true;
-            this.uart_stop_label.Location = new System.Drawing.Point(401, 0);
-            this.uart_stop_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.uart_stop_label.Location = new System.Drawing.Point(534, 0);
             this.uart_stop_label.Name = "uart_stop_label";
-            this.uart_stop_label.Size = new System.Drawing.Size(54, 13);
+            this.uart_stop_label.Size = new System.Drawing.Size(68, 16);
             this.uart_stop_label.TabIndex = 50;
             this.uart_stop_label.Text = "Стоп. бит";
             // 
@@ -261,39 +259,36 @@
             this.uart_stop_combobox.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.uart_stop_combobox.Location = new System.Drawing.Point(401, 74);
-            this.uart_stop_combobox.Margin = new System.Windows.Forms.Padding(2);
+            this.uart_stop_combobox.Location = new System.Drawing.Point(534, 91);
+            this.uart_stop_combobox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.uart_stop_combobox.Name = "uart_stop_combobox";
-            this.uart_stop_combobox.Size = new System.Drawing.Size(129, 21);
+            this.uart_stop_combobox.Size = new System.Drawing.Size(172, 24);
             this.uart_stop_combobox.TabIndex = 49;
             // 
             // uart_number_bits_label
             // 
             this.uart_number_bits_label.AutoSize = true;
-            this.uart_number_bits_label.Location = new System.Drawing.Point(268, 0);
-            this.uart_number_bits_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.uart_number_bits_label.Location = new System.Drawing.Point(357, 0);
             this.uart_number_bits_label.Name = "uart_number_bits_label";
-            this.uart_number_bits_label.Size = new System.Drawing.Size(49, 13);
+            this.uart_number_bits_label.Size = new System.Drawing.Size(60, 16);
             this.uart_number_bits_label.TabIndex = 48;
             this.uart_number_bits_label.Text = "Кол. бит";
             // 
             // uart_baudrate_label
             // 
             this.uart_baudrate_label.AutoSize = true;
-            this.uart_baudrate_label.Location = new System.Drawing.Point(2, 0);
-            this.uart_baudrate_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.uart_baudrate_label.Location = new System.Drawing.Point(3, 0);
             this.uart_baudrate_label.Name = "uart_baudrate_label";
-            this.uart_baudrate_label.Size = new System.Drawing.Size(55, 13);
+            this.uart_baudrate_label.Size = new System.Drawing.Size(68, 16);
             this.uart_baudrate_label.TabIndex = 51;
             this.uart_baudrate_label.Text = "Скорость";
             // 
             // uart_parity_label
             // 
             this.uart_parity_label.AutoSize = true;
-            this.uart_parity_label.Location = new System.Drawing.Point(135, 0);
-            this.uart_parity_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.uart_parity_label.Location = new System.Drawing.Point(180, 0);
             this.uart_parity_label.Name = "uart_parity_label";
-            this.uart_parity_label.Size = new System.Drawing.Size(53, 13);
+            this.uart_parity_label.Size = new System.Drawing.Size(68, 16);
             this.uart_parity_label.TabIndex = 46;
             this.uart_parity_label.Text = "Бит четн.";
             // 
@@ -307,12 +302,12 @@
             // 
             // uart_setting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.uart_main_table);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "uart_setting";
-            this.Size = new System.Drawing.Size(536, 448);
+            this.Size = new System.Drawing.Size(715, 551);
             this.uart_main_table.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
