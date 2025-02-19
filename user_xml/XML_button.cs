@@ -29,7 +29,7 @@ namespace KPA_BUDU_rework
         public delegate void SEND_byte_Handler(byte[] msg);
         public event SEND_byte_Handler SendByteHandler;
 
-        private string filePath_XML = @"C:\Users\NewArm\Desktop\NETWORK\БУДУ\СТИЛСОФТ\KPA_BUDU_programm-master\XML_struct\Commands_with_struct.xml";
+        private string filePath_XML = @"D:\КПА БУДУ\XML_struct\Commands_with_struct.xml";
 
         public TableLayoutPanel table_main = new TableLayoutPanel();
         private TableLayoutPanel table_but = new TableLayoutPanel();
@@ -148,7 +148,11 @@ namespace KPA_BUDU_rework
             table_but.Controls.Clear();
             table_slider.Controls.Clear();
             XmlDocument xml = new XmlDocument();
-            xml.Load(filePath_XML);
+            try
+            {
+                xml.Load(filePath_XML);
+            }
+            catch (Exception ex) { }
             XmlElement element = xml.DocumentElement;
 
             // ........................................................................Очистка стилей колонок и строк таблицы
